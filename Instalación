@@ -111,4 +111,4 @@ para que se inicie bien con las configuraciones nuevas y ahora vamos al cliente
 
 Ahora vamos a configurar Nagios para que se inicie automáticamente junto con Ubuntu. Para ello usamos el script que hemos generado antes con **"make install-init"**
 
-![](imagenes/instalacion/instalacionNAGIOS-20.png)
+![](imagen/1.png)
