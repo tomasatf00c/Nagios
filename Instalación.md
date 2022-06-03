@@ -1,125 +1,125 @@
 
 instalar cosas
 sudo apt-get install wget build-essential apache2 php libapache2-mod-php php-gd libgd-dev
-((((((((((((((())))))))))))1
+![](Imagen/1.png)
 
 crear usuario y grupo
 sudo useradd nagios
 sudo groupadd nagcmd
 sudo usermod -a -G nagcmd nagios
 sudo usermod -a -G nagios,nagcmd www-data
-((((((((((((((())))))))))))2
+![](Imagen/2.png)
 
 descargar y instalar nagios
 wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.2.0.tar.gz
-((((((((((((((())))))))))))3
+![](Imagen/3.png)
 
 tar -xzf nagios-4.2.0.tar.gz
-((((((((((((((())))))))))))4
+![](Imagen/4.png)
 
 cd nagios-4.2.0
 sudo ./configure --with-nagios-group=nagios --with-command-group=nagcmd
-((((((((((((((())))))))))))5
+![](Imagen/5.png)
 
 compilar
 sudo make all
-((((((((((((((())))))))))))6
+![](Imagen/6.png)
 
 sudo make install
-((((((((((((((())))))))))))7
+![](Imagen/7.png)
 
 sudo make install-init
-((((((((((((((())))))))))))8
+![](Imagen/8.png)
 
 sudo make install-commandmode
-((((((((((((((())))))))))))9
+![](Imagen/9.png)
 
 sudo make install-config
-((((((((((((((())))))))))))10
+![](Imagen/10.png)
 
 generar archivo de ejemplo
 sudo /usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-available/nagios.conf
-((((((((((((((())))))))))))11
+![](Imagen/11.png)
 
 activar módulos en apache2
 sudo a2enmod rewrite
 sudo a2enmod cgi
-((((((((((((((())))))))))))12
+![](Imagen/12.png)
 
 
 darle permisos al usuario nagios
 sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 qwe
-((((((((((((((())))))))))))13
+![](Imagen/13.png)
 
 reiniciar servicios
 sudo /etc/init.d/apache2 restart
 sudo /etc/init.d/nagios restart
-((((((((((((((())))))))))))14
+![](Imagen/14.png)
 
 luego ver IP de la máquina y ya el cliente
-((((((((((((((())))))))))))15
+![](Imagen/15.png)
+
 Antes de probar nagios no podrias ya que no esta enlazado
 
 Enlazar
 sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled
-((((((((((((((())))))))))))16
+![](Imagen/16.png)
 
 para que se nos enlace reiniciamos el servicio
 sudo /etc/init.d/apache2 restart
-((((((((((((((())))))))))))17
-((((((((((((((())))))))))))18
-((((((((((((((())))))))))))19
+![](Imagen/17.png)
+![](Imagen/18.png)
+![](Imagen/19.png)
 
 Ya tenemos acceso a nuestro nagios pero no tiene ningún complemento funcionando
 
 descargar plugins81.88.48.71
 wget https://nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz
-((((((((((((((())))))))))))20
+![](Imagen/20.png)
 
 descomprimir
 tar -xvzf nagios-plugins-2.3.3.tar.gz
-((((((((((((((())))))))))))21
+![](Imagen/21.png)
 
 cd nagios-plugins-2.3.3
-((((((((((((((())))))))))))22
+![](Imagen/22.png)
 
 sudo ./configure
-((((((((((((((())))))))))))23
+![](Imagen/23.png)
 
 sudo make
-((((((((((((((())))))))))))24
+![](Imagen/24.png)
 
 sudo make install
-((((((((((((((())))))))))))25
-
+![](Imagen/25.png)
 
 cd /usr/local/nagios/etc/objects 
-((((((((((((((())))))))))))26
+![](Imagen/26.png)
 
 una vez en esta carpeta accedemos a un fichero 
 sudo nano windows.cfg
-((((((((((((((())))))))))))27
+![](Imagen/27.png)
 
 81.88.48.71
 poner otro con esa ip para probarlo
 AQUÍ PARA LA WEB DEL CENTRO CREÓ OTRO HOST CON LA IP DE LA PÁGINA DEL CENTRO PARA MONITOREARLO
-((((((((((((((())))))))))))28
-((((((((((((((())))))))))))29
+![](Imagen/28.png)
+![](Imagen/29.png)
 
 
 Una vez terminado esto vamos a descomentar windows
 
 cd /usr/local/nagios/etc
 sudo nano nagios.cfg
-((((((((((((((())))))))))))30
-((((((((((((((())))))))))))31
-((((((((((((((())))))))))))32
+![](Imagen/30.png)
+![](Imagen/31.png)
+![](Imagen/32.png)
 
 
 para que coja el fichero de configuración de nagios 
 sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
-((((((((((((((())))))))))))33
+![](Imagen/33.png)
 
 sudo /etc/init.d/nagios restart
-((((((((((((((())))))))))))34
+![](Imagen/34.png)
