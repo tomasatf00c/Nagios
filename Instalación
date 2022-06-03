@@ -1,0 +1,21 @@
+# Proyecto IDP NAGIOS #
+
+## INSTALACIÓN NAGIOS ##
+
+### PASO 1 Prerrequisitos ###
+
+### PASO 2 Crear informacion de cuenta de usuario ###
+
+### PASO 3 Compilación e instalación de Nagios en Ubuntu ###
+
+### PASO 4 Personalización de la configuración ###
+
+### PASO 5 Configuración de la Interfaz Web ###
+
+### PASO 6 Compilar e Instalar los plugins de Nagios ###
+
+### Paso 7 Inicio de Nagios en Ubuntu ###
+
+Ahora vamos a configurar Nagios para que se inicie automáticamente junto con Ubuntu. Para ello usamos el script que hemos generado antes con **"make install-init"**
+
+![](imagenes/instalacion/instalacionNAGIOS-20.png)
