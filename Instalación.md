@@ -6,9 +6,13 @@ sudo apt-get install wget build-essential apache2 php libapache2-mod-php php-gd 
 
 
 crear usuario y grupo
+
 sudo useradd nagios
+
 sudo groupadd nagcmd
+
 sudo usermod -a -G nagcmd nagios
+
 sudo usermod -a -G nagios,nagcmd www-data
 
 ![](Imagen/2.png)
@@ -62,27 +66,34 @@ sudo make install-config
 
 
 generar archivo de ejemplo
+
 sudo /usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-available/nagios.conf
 
 ![](Imagen/12.png)
 
 
 activar módulos en apache2
+
 sudo a2enmod rewrite
+
 sudo a2enmod cgi
 
 ![](Imagen/13.png)
 
 
 darle permisos al usuario nagios
+
 sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+
 qwe
 
 ![](Imagen/14.png)
 
 
 reiniciar servicios
+
 sudo /etc/init.d/apache2 restart
+
 sudo /etc/init.d/nagios restart
 
 ![](Imagen/15.png)
@@ -96,12 +107,14 @@ Antes de probar nagios no podrias ya que no esta enlazado
 
 
 Enlazar
+
 sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled
 
 ![](Imagen/17.png)
 
 
 para que se nos enlace reiniciamos el servicio
+
 sudo /etc/init.d/apache2 restart
 
 ![](Imagen/18.png)
@@ -115,12 +128,14 @@ Ya tenemos acceso a nuestro nagios pero no tiene ningún complemento funcionando
 
 
 descargar plugins81.88.48.71
+
 wget https://nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz
 
 ![](Imagen/21.png)
 
 
 descomprimir
+
 tar -xvzf nagios-plugins-2.3.3.tar.gz
 
 ![](Imagen/22.png)
@@ -152,13 +167,16 @@ cd /usr/local/nagios/etc/objects
 
 
 una vez en esta carpeta accedemos a un fichero 
+
 sudo nano windows.cfg
 
 ![](Imagen/28.png)
 
 
 81.88.48.71
+
 poner otro con esa ip para probarlo
+
 AQUÍ PARA LA WEB DEL CENTRO CREÓ OTRO HOST CON LA IP DE LA PÁGINA DEL CENTRO PARA MONITOREARLO
 
 ![](Imagen/29.png)
@@ -170,6 +188,7 @@ Una vez terminado esto vamos a descomentar windows
 
 
 cd /usr/local/nagios/etc
+
 sudo nano nagios.cfg
 
 ![](Imagen/31.png)
@@ -180,6 +199,7 @@ sudo nano nagios.cfg
 
 
 para que coja el fichero de configuración de nagios 
+
 sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 
 ![](Imagen/34.png)
