@@ -207,4 +207,4 @@ sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 
 sudo /etc/init.d/nagios restart
 
-![](Imagen/34.png)
+![](Imagen/35.png)
