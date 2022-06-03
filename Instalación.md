@@ -1,4 +1,6 @@
 instalar cosas
+
+
 sudo apt-get install wget build-essential apache2 php libapache2-mod-php php-gd libgd-dev
 ![](Imagen/1.png)
 
