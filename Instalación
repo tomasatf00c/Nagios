@@ -2,19 +2,112 @@
 
 ## INSTALACIÓN NAGIOS ##
 
+
 ### PASO 1 Prerrequisitos ###
+
+sudo apt-get install wget build-essential apache2 php libapache2-mod-php php-gd libgd-dev
+
 
 ### PASO 2 Crear informacion de cuenta de usuario ###
 
-### PASO 3 Compilación e instalación de Nagios en Ubuntu ###
 
-### PASO 4 Personalización de la configuración ###
+sudo useradd nagios
+sudo groupadd nagcmd
+sudo usermod -a -G nagcmd nagios
+sudo usermod -a -G nagios,nagcmd www-data
 
-### PASO 5 Configuración de la Interfaz Web ###
 
-### PASO 6 Compilar e Instalar los plugins de Nagios ###
+### PASO 3 Compilación e instalación de Nagios###
 
-### Paso 7 Inicio de Nagios en Ubuntu ###
+wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.2.0.tar.gz
+
+tar -xzf nagios-4.2.0.tar.gz
+
+cd nagios-4.2.0
+
+sudo ./configure --with-nagios-group=nagios --with-command-group=nagcmd
+
+sudo make all
+
+sudo make install
+
+sudo make install-init
+
+sudo make install-commandmode
+
+sudo make install-config
+
+
+### PASO 4 Configurar el Apache y probar si funciona en el cliente###
+
+sudo /usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-available/nagios.conf
+
+activar módulos en apache2
+sudo a2enmod rewrite
+sudo a2enmod cgi
+
+darle permisos al usuario nagios
+sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+qwe
+
+reiniciar servicios
+sudo /etc/init.d/apache2 restart
+sudo /etc/init.d/nagios restart
+
+luego ver IP de la máquina y ya el cliente
+
+Antes de probar nagios no podrias ya que no esta enlazado
+
+Enlazar
+sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled
+para que se nos enlace reiniciamos el servicio
+sudo /etc/init.d/apache2 restart
+
+
+Ya tenemos acceso a nuestro nagios pero no tiene ningún complemento funcionando
+
+
+### PASO 5 Personalización de la configuración###
+
+descargar plugins
+wget https://nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz
+
+descomprimir
+tar -xvzf nagios-plugins-2.3.3.tar.gz
+
+cd nagios-plugins-2.3.3
+
+sudo ./configure
+
+sudo make
+
+sudo make install
+
+cd /usr/local/nagios/etc/objects 
+una vez en esta carpeta accedemos a un fichero 
+nano windows.cfg
+
+AQUÍ PARA LA WEB DEL CENTRO CREÓ OTRO HOST CON LA IP DE LA PÁGINA DEL CENTRO PARA MONITOREARLO
+
+Una vez terminado esto vamos a descomentar windows, y los servicios para que luego se puedan ver
+
+cd /usr/local/nagios/etc
+sudo nano nagios.cfg
+
+
+### PASO 6 Los ultimos ajustes ###
+
+para que coja el fichero de configuración de nagios 
+
+sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+
+sudo /etc/init.d/nagios restart
+
+para que se inicie bien con las configuraciones nuevas y ahora vamos al cliente
+
+
+
+### PASO NNNNNNNNNNNN ###
 
 Ahora vamos a configurar Nagios para que se inicie automáticamente junto con Ubuntu. Para ello usamos el script que hemos generado antes con **"make install-init"**
 
