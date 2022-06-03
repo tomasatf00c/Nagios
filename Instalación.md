@@ -63,14 +63,14 @@ sudo make install-config
 ![](Imagen/11.png)
 
 
-generar archivo de ejemplo
+Generar archivo de ejemplo
 
 sudo /usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-available/nagios.conf
 
 ![](Imagen/12.png)
 
 
-activar módulos en apache2
+Activar módulos en apache2
 
 sudo a2enmod rewrite
 
@@ -79,7 +79,7 @@ sudo a2enmod cgi
 ![](Imagen/13.png)
 
 
-darle permisos al usuario nagios
+Darle permisos al usuario nagios
 
 sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 
@@ -88,7 +88,7 @@ qwe
 ![](Imagen/14.png)
 
 
-reiniciar servicios
+Reiniciar servicios
 
 sudo /etc/init.d/apache2 restart
 
@@ -97,7 +97,7 @@ sudo /etc/init.d/nagios restart
 ![](Imagen/15.png)
 
 
-luego ver IP de la máquina y ya el cliente
+Luego ver IP de la máquina y ya el cliente
 
 ![](Imagen/16.png)
 
@@ -125,14 +125,14 @@ sudo /etc/init.d/apache2 restart
 Ya tenemos acceso a nuestro nagios pero no tiene ningún complemento funcionando
 
 
-descargar plugins81.88.48.71
+Descargar plugins81.88.48.71
 
 wget https://nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz
 
 ![](Imagen/21.png)
 
 
-descomprimir
+Descomprimir
 
 tar -xvzf nagios-plugins-2.3.3.tar.gz
 
@@ -164,18 +164,11 @@ cd /usr/local/nagios/etc/objects
 ![](Imagen/27.png)
 
 
-una vez en esta carpeta accedemos a un fichero 
+Una vez en esta carpeta accedemos a un fichero 
 
 sudo nano windows.cfg
 
 ![](Imagen/28.png)
-
-
-81.88.48.71
-
-poner otro con esa ip para probarlo
-
-AQUÍ PARA LA WEB DEL CENTRO CREÓ OTRO HOST CON LA IP DE LA PÁGINA DEL CENTRO PARA MONITOREARLO
 
 ![](Imagen/29.png)
 
@@ -196,7 +189,7 @@ sudo nano nagios.cfg
 ![](Imagen/33.png)
 
 
-para que coja el fichero de configuración de nagios 
+Para que coja el fichero de configuración de nagios 
 
 sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 
