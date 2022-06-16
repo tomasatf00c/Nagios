@@ -4,4 +4,4 @@ Cliente Windows en Nagios Core, la version gratuita de Nagios
 
 [Instalación de Nagios](/Nagios/instalación.md)
 
-[Configuración de Cliente de Windows para Nagios](/Nagios/Cliente Windows.md)
+[Configuración de Cliente de Windows para Nagios](/Nagios/ClienteWindows.md)
